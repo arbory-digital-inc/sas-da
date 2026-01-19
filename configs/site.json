@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "code": {
+    "owner": "arbory-digital-inc",
+    "repo": "sas-da",
+    "source": {
+      "type": "github",
+      "url": "https://github.com/arbory-digital-inc/sas-da"
+    }
+  },
+  "content": {
+    "source": {
+      "url": "https://content.da.live/arbory-digital-inc/sas-da/",
+      "type": "markup"
+    },
+    "contentBusId": "a46747f3e895729c3d9a4a7d1bf653b63a5b434605a1b4277d24e0f4df4"
+  },
+  "sidekick": {
+    "plugins": [
+      {
+        "id": "quick-edit",
+        "title": "Quick Edit",
+        "environments": ["dev", "preview"],
+        "event": "quick-edit"
+      }
+    ]
+  },
+  "lastModified": "2026-01-16T23:42:30.370Z",
+  "created": "2026-01-16T23:42:29.183Z"
+}
