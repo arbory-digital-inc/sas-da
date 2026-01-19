@@ -224,6 +224,20 @@ export function decorateMain(main) {
   buildLayoutContainer(main); // JMP Added
 }
 
+async function loadSidekick() {
+  let sk = document.querySelector('aem-sidekick');
+
+  if (sk) {
+    import('../tools/sidekick/sidekick.js').then((mod) => mod.default(sk));
+    return;
+  }
+
+  document.addEventListener('sidekick-ready', (sk) => {
+    sk = document.querySelector('aem-sidekick');
+    import('../tools/sidekick/sidekick.js').then((mod) => mod.default(sk));
+  });
+}
+
 /**
  * Loads everything needed to get to LCP.
  * @param {Element} doc The container element
@@ -265,6 +279,7 @@ async function loadLazy(doc) {
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
+  loadSidekick();
 }
 
 /**
@@ -278,7 +293,7 @@ function loadDelayed() {
 }
 
 
-async function loadPage() {
+export async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
