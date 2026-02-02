@@ -1,0 +1,43 @@
+main .lottie {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+main .lottie .lottie-container {
+  max-width: 100%;
+  width: 100%;
+}
+
+main .lottie .lottie-container.align-left {
+  margin-inline-end: auto;
+}
+
+main .lottie .lottie-container.align-center {
+  margin-inline: auto;
+}
+
+main .lottie .lottie-container.align-right {
+  margin-inline-start: auto;
+}
+
+main .lottie .lottie-container svg {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (width >= 600px) {
+  main .lottie {
+    padding: 3rem 0;
+  }
+}
+
+@media (width >= 900px) {
+  main .lottie {
+    padding: 4rem 0;
+  }
+  
+  main .lottie .lottie-container {
+    max-width: 800px;
+  }
+}
