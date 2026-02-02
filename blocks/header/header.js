@@ -135,10 +135,10 @@ function handleScroll(navSections) {
       const hid = nav.classList.contains('hide');
       if (!hid && scrollPos > lastPos && scrollPos > 100) {
         nav.classList.add('hide');
-        subnav.classList.add('send-top');
+        if (subnav) subnav.classList.add('send-top');
       } else if (hid && scrollPos < lastPos) {
         nav.classList.remove('hide');
-        subnav.classList.remove('send-top');
+        if (subnav) subnav.classList.remove('send-top');
       }
       lastPos = scrollPos;
     });

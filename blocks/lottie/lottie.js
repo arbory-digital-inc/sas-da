@@ -27,6 +27,9 @@ export default async function decorate(block) {
     }
   });
 
+  // eslint-disable-next-line no-console
+  console.log('Lottie block config:', { fileUrl, align, loop });
+
   if (!fileUrl) {
     block.textContent = 'Error: No file-url provided';
     return;
@@ -44,12 +47,26 @@ export default async function decorate(block) {
   try {
     await loadScript('https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js');
 
+    // eslint-disable-next-line no-console
+    console.log('Lottie library loaded, initializing animation...');
+
     const animation = window.lottie.loadAnimation({
       container,
       renderer: 'svg',
-      loop: !loop,
-      autoplay: true,
+      loop: false,
+      autoplay: !loop,
       path: fileUrl,
+    });
+
+    animation.addEventListener('DOMLoaded', () => {
+      // eslint-disable-next-line no-console
+      console.log('Lottie animation loaded successfully');
+    });
+
+    animation.addEventListener('data_failed', () => {
+      // eslint-disable-next-line no-console
+      console.error('Failed to load Lottie data from:', fileUrl);
+      container.textContent = 'Error: Failed to load animation data';
     });
 
     if (loop) {
@@ -57,8 +74,6 @@ export default async function decorate(block) {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             animation.goToAndPlay(0);
-          } else {
-            animation.pause();
           }
         });
       }, {

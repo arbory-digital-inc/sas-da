@@ -7,6 +7,8 @@ main .lottie {
 main .lottie .lottie-container {
   max-width: 100%;
   width: 100%;
+  min-height: 200px;
+  background-color: var(--background-color);
 }
 
 main .lottie .lottie-container.align-left {
