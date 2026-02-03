@@ -1,0 +1,164 @@
+main .viya-facts {
+  padding: 2rem 1rem;
+}
+
+main .viya-facts-container {
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+main .viya-fact-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+}
+
+main .viya-fact-badge {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: #4398f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+}
+
+main .viya-fact-item:nth-child(2) .viya-fact-badge {
+  background: #2563eb;
+}
+
+main .viya-fact-label {
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+main .viya-fact-stat {
+  color: white;
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  font-family: var(--heading-font-family);
+}
+
+main .viya-fact-description {
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+main .viya-fact-content {
+  text-align: center;
+  max-width: 450px;
+}
+
+main .viya-fact-content p {
+  margin: 0 0 1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+main .viya-fact-content p:last-child {
+  margin-bottom: 0;
+}
+
+main .viya-fact-content a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+main .viya-fact-content a:hover {
+  color: var(--link-hover-color);
+  text-decoration: underline;
+}
+
+main .viya-fact-content .button-container {
+  margin-top: 1.5rem;
+}
+
+main .viya-fact-content .button {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background-color: #2563eb;
+  color: white;
+  border-radius: 24px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+main .viya-fact-content .button:hover {
+  background-color: #1d4ed8;
+  color: white;
+  text-decoration: none;
+}
+
+main .viya-fact-item:first-child .viya-fact-content .button {
+  background-color: #4398f9;
+}
+
+main .viya-fact-item:first-child .viya-fact-content .button:hover {
+  background-color: #2c7dd9;
+}
+
+@media (width >= 600px) {
+  main .viya-facts {
+    padding: 3rem 2rem;
+  }
+}
+
+@media (width >= 900px) {
+  main .viya-facts {
+    padding: 4rem 2rem;
+  }
+
+  main .viya-facts-container {
+    gap: 4rem;
+  }
+}
+
+@media (width < 600px) {
+  main .viya-fact-badge {
+    width: 240px;
+    height: 240px;
+    padding: 1.5rem;
+  }
+
+  main .viya-fact-stat {
+    font-size: 3rem;
+  }
+
+  main .viya-fact-label,
+  main .viya-fact-description {
+    font-size: 0.85rem;
+  }
+
+  main .viya-fact-item {
+    min-width: 100%;
+  }
+
+  main .viya-facts-container {
+    gap: 2rem;
+  }
+}
