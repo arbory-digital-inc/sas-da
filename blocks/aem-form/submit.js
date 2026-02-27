@@ -1,18 +1,39 @@
 import { DEFAULT_THANK_YOU_MESSAGE, getSubmitBaseUrl } from './constant.js';
 
+function isSafeRedirectUrl(url) {
+  if (!url) return false;
+
+  try {
+    // Parse the URL relative to current location
+    const parsedUrl = new URL(url, window.location.href);
+
+    // Only allow same-origin redirects
+    return parsedUrl.origin === window.location.origin;
+  } catch {
+    // Invalid URL
+    return false;
+  }
+}
+
 export function submitSuccess(e, form) {
   const { payload } = e;
   const redirectUrl = form.dataset.redirectUrl || payload?.body?.redirectUrl;
   const thankYouMsg = form.dataset.thankYouMsg || payload?.body?.thankYouMessage;
-  if (redirectUrl) {
-    window.location.assign(encodeURI(redirectUrl));
+
+  // Validate redirect URL before using it
+  if (redirectUrl && isSafeRedirectUrl(redirectUrl)) {
+    window.location.assign(redirectUrl);
   } else {
+    if (redirectUrl) {
+      console.warn('Unsafe redirect URL blocked:', redirectUrl);
+    }
+
     let thankYouMessage = form.parentNode.querySelector('.form-message.success-message');
     if (!thankYouMessage) {
       thankYouMessage = document.createElement('div');
       thankYouMessage.className = 'form-message success-message';
     }
-    thankYouMessage.innerHTML = thankYouMsg || DEFAULT_THANK_YOU_MESSAGE;
+    thankYouMessage.textContent = thankYouMsg || DEFAULT_THANK_YOU_MESSAGE;
     form.parentNode.insertBefore(thankYouMessage, form);
     if (thankYouMessage.scrollIntoView) {
       thankYouMessage.scrollIntoView({ behavior: 'smooth' });
